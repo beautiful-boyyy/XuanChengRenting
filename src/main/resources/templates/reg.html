@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!--声明文档兼容模式，表示使用IE浏览器的最新模式-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Responsive layout：响应式布局-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>宣城租房 - 用户注册</title>
+    <link th:href="@{/bootstrap/bootstrap.min.css}" rel="stylesheet">
+    <style type="text/css">
+        .row-center{
+            text-align:center;
+            margin-top: 120px;
+        }
+        .col-center {
+            display:inline-block;
+            float:none;
+            text-align:left;
+        }
+        .setbg{
+            background: url("/gif/注册页背景.gif");
+            background-size: 1180px 439px;
+        }
+        .panel{
+            border: 3px solid #69a794;
+            border-radius: 10px;
+        }
+        .green{
+            background-color: #69a794;
+        }
+        .row-center{
+            margin:50px;
+        }
+        .gray{
+            background-color: #5d655f;
+        }
+    </style>
+</head>
+<body>
+    <img th:src="@{/gif/logo.gif}" alt="" width="200" height="50">
+    <hr/>
+    <div class="container setbg">
+        <div class="row row-center">
+
+            <div class="col-center">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form class="center-block" role="form" th:action="@{/Reg}">
+                            <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+                            <div class="form-group">
+                                <label for="name">账　　号：</label>
+                                <INPUT type="text" id="name" name="uid" placeholder="请输入用户名">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">密　　码：</label>
+                                <INPUT type="password" id="password" name="pwd" placeholder="请输入密码">
+                            </div>
+                            <div class="form-group">
+                                <label for="repassword">确认密码：</label>
+                                <INPUT type="password" id="repassword" name="rPwd" placeholder="请再次输入密码">
+                            </div>
+                            <div class="form-group">
+                                <label for="telephone">电　　话：</label>
+                                <INPUT type="text" id="telephone" name="phone" placeholder="请输入电话">
+                            </div>
+                            <div class="form-group">
+                                <label for="username">用&nbsp;&nbsp;户&nbsp;&nbsp;名：</label>
+                                <INPUT type="text" id="username" name="username" placeholder="请输入您的用户名">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-default center-block green">注册</button>
+                            </div>
+
+
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br/>
+    </div>
+    <br/>
+    <br/>
+
+    <footer class="navbar text-center bg-primary gray" id="copyright">
+        <br>
+        <div class="row">
+
+            <div class="col-md-3">关于我们</div>
+            <div class="col-md-3">联系方式</div>
+            <div class="col-md-3">意见反馈</div>
+            <div class="col-md-3">帮助中心</div>
+
+
+
+        </div>
+        <br>
+        <div>宣城租房 © 2010 安徽 皖ICP证1000001号</div>
+        <br>
+
+
+    </footer>
+
+        <!-- 引入jQuery核心js文件 -->
+        <script th:src="@{/jquery/jquery-3.5.1.js}"></script>
+        <!-- 引入BootStrap核心js文件 -->
+        <script th:src="@{/bootstrap/bootstrap.js}"></script>
+    <script>
+
+        if($(window).height()==$(document).height()){
+            $("#copyright").addClass("navbar-fixed-bottom");
+        }
+        else{
+            $("#copyright").removeClass(" navbar-fixed-bottom");
+        }
+
+    </script>
+<script>
+    window.onresize = function () {
+        //var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+        //document.getElementById("这里放id").style.width = w + "px";
+        document.getElementById("#cardlist").style.height = h-36 + "px";
+
+    }
+
+</script>
+</body>
+</html>

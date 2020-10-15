@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.hfut.Mapper.HouseSourceMapper">
+    <select id="selectAll" resultType="HouseSource">
+        select * from sx.house
+    </select>
+    <select id="selectByhPhone" resultType="HouseSource">
+        select * from sx.house where hPhone = #{hPhone}
+    </select>
+    <select id="selectByHid" resultType="HouseSource">
+        select * from sx.house where hid = #{hid}
+    </select>
+    <delete id="deleteHouseSource" parameterType="int">
+        delete from sx.house where hid = #{hid};
+    </delete>
+    <insert id="addHouseSource" parameterType="HouseSource">
+    insert into sx.house(hDate, location, title, price, shape, area, hPhone, description)
+    values
+    (#{hDate}, #{location}, #{title}, #{price}, #{shape}, #{area}, #{hPhone}, #{description})
+    </insert>
+    <update id="updateHouseSource" parameterType="HouseSource">
+        update sx.house
+        set hDate = #{hDate}, location = #{location},
+        title = #{title}, price = #{price}, shape = #{shape},
+        area = #{area}, hPhone = #{hPhone}, description = #{description}
+        where hid = #{hid}
+    </update>
+    <select id="selectByTitle" resultType="HouseSource">
+        select * from sx.house where title like #{value}
+    </select>
+    <select id="selectByTitleAndPhone" parameterType="java.util.Map" resultType="HouseSource">
+        select * from sx.house where title like #{title} and hPhone = #{hPhone};
+    </select>
+</mapper>

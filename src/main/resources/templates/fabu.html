@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!--声明文档兼容模式，表示使用IE浏览器的最新模式-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Responsive layout：响应式布局-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>宣城租房 -发布房屋信息</title>
+    <link th:href="@{/bootstrap/bootstrap.min.css}" rel="stylesheet">
+    <style type="text/css">
+        .row-center{
+            text-align:center;
+            margin-top: 120px;
+        }
+        .col-center {
+            display:inline-block;
+            float:none;
+            text-align:left;
+        }
+        .setbg{
+            background: url("/gif/发布房屋信息背景.gif");
+            background-size: 1180px 563px;
+        }
+        .panel{
+            border: 3px solid #69a794;
+            border-radius: 10px;
+        }
+        .green{
+            background-color: #69a794;
+        }
+        .row-center{
+            margin:50px;
+        }
+        .gray{
+            background-color: #5d655f;
+        }
+        #fabu{
+            border-radius: 10px;
+        }
+        a:hover{
+            color:#69a794;
+        }
+        a{
+            color: #69a794;
+        }
+        a:active {
+            color:#69a794;
+        }
+    </style>
+</head>
+<body>
+    <form class="navbar navbar-form row" role="search">
+        <img th:src="@{/gif/logo.gif}" alt="" width="200" height="50" class="col-sm-2">
+<!--        <div class="form-group col-sm-offset-5 col-sm-5">-->
+<!--            <a th:href="list.html" class="text-green col-sm-3" style="font-weight: bold;font-size: 20px;line-height: 50px">首页</a>-->
+<!--            <input type="text" class="form-control" placeholder="Search">-->
+<!--            <button type="submit" class="btn btn-default">搜索</button>-->
+<!--            <a href="#" class="col-sm-offset-1">-->
+<!--                <img src="切图gif/我的主页.gif" alt="" width="50" height="50">-->
+<!--            </a>-->
+<!--        </div>-->
+    </form>
+    <hr/>
+    <div class="container setbg">
+        <div class="row row-center">
+
+            <div class="col-center">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form class="center-block" role="form" th:action="@{/publish}">
+
+                            <div class="form-group">
+                                <label for="name" class="col-md-4 control-label">标  题：</label>
+                                <div class="col-md-8">
+                                    <INPUT type="text" id="name" name="title" placeholder="请输入标题">
+                                </div>
+                                <br/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dropdown" class="col-md-4 control-label">户  型：</label>
+
+                                <div class="col-md-8">
+                                    <div class="dropdown" id="dropdown" >
+<!--                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="menu" name="shape">-->
+<!--                                            一室一厅-->
+<!--                                            <span class="caret"></span>-->
+<!--                                        </button>-->
+
+<!--                                        <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="dropdownMenu1">-->
+<!--                                            <li><a href="#" onclick="shows1($(this).text())" role="menuitem">一室一厅</a> </li>-->
+<!--                                            <li><a href="#" onclick="shows1($(this).text())" role="menuitem"></a> </li>-->
+<!--                                            <li><a href="#" onclick="shows1($(this).text())" role="menuitem"></a> </li>-->
+<!--                                            <li><a href="#" onclick="shows1($(this).text())" role="menuitem">两室两厅</a> </li>-->
+<!--                                        </ul>-->
+                                        <label>
+                                            <select name="shape">
+                                                <option value ="一室一厅">一室一厅</option>
+                                                <option value ="一室两厅">一室两厅</option>
+                                                <option value="两室一厅">两室一厅</option>
+                                                <option value="两室两厅">两室两厅</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                </div>
+                                <br/>
+
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="mianji" class="col-md-4 control-label">面  积：</label>
+                                <div class="col-md-8">
+                                    <INPUT type="number" step="0.01" name="area" id="mianji" placeholder="请输入房屋面积大小">
+                                </div>
+                                <br/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="price" class="col-md-4 control-label">价  格：</label>
+                                <div class="col-md-8">
+                                    <INPUT type="number" name="price" step="0.01" id="price" placeholder="请输入价格">
+                                </div>
+                                <br/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="date" class="col-md-5 control-label">房产证日期：</label>
+                                <div class="col-md-7">
+                                    <INPUT type="date" name="hDate" id="date">
+                                </div>
+                                <br/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dropdown2" class="col-md-4 control-label">位  置：</label>
+
+                                <div class="col-md-4">
+                                    <div class="dropdown" id="dropdown2">
+<!--                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="menu2">-->
+<!--                                            区-->
+<!--                                            <span class="caret"></span>-->
+<!--                                        </button>-->
+
+<!--                                        <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="dropdownMenu1">-->
+<!--                                            <li><a href="#" onclick="shows2($(this).text())" role="menuitem">海淀区</a> </li>-->
+<!--                                            <li><a href="#" onclick="shows2($(this).text())" role="menuitem">东城区</a> </li>-->
+<!--                                            <li><a href="#" onclick="shows2($(this).text())" role="menuitem">朝阳区</a> </li>-->
+<!--                                            <li><a href="#" onclick="shows2($(this).text())" role="menuitem">丰台区</a> </li>-->
+<!--&lt;!&ndash;                                            <li><a href="#" onclick="shows2($(this).text())" role="menuitem">一室两厅</a> </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <li><a href="#" onclick="shows2($(this).text())" role="menuitem">两室一厅</a> </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <li><a href="#" onclick="shows2($(this).text())" role="menuitem">两室两厅</a> </li>&ndash;&gt;-->
+<!--                                        </ul>-->
+
+                                        <label>
+                                            <select name="location">
+                                                <option value ="海淀区">海淀区</option>
+                                                <option value ="东城区">东城区</option>
+                                                <option value="朝阳区">朝阳区</option>
+                                                <option value="丰台区">丰台区</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+<!--                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="menu3">-->
+<!--                                        街道-->
+<!--                                        <span class="caret"></span>-->
+<!--                                    </button>-->
+<!--                                    <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="dropdownMenu2">-->
+<!--                                        <li><a href="#" onclick="shows3($(this).text())" role="menuitem">景山街道</a> </li>-->
+<!--                                        <li><a href="#" onclick="shows3($(this).text())" role="menuitem">朝外街道</a> </li>-->
+<!--                                        <li><a href="#" onclick="shows3($(this).text())" role="menuitem">鲁谷街道</a> </li>-->
+<!--                                        <li><a href="#" onclick="shows3($(this).text())" role="menuitem">大峪街道</a> </li>-->
+<!--                                        &lt;!&ndash;                                            <li><a href="#" onclick="shows2($(this).text())" role="menuitem">一室两厅</a> </li>&ndash;&gt;-->
+<!--                                        &lt;!&ndash;                                            <li><a href="#" onclick="shows2($(this).text())" role="menuitem">两室一厅</a> </li>&ndash;&gt;-->
+<!--                                        &lt;!&ndash;                                            <li><a href="#" onclick="shows2($(this).text())" role="menuitem">两室两厅</a> </li>&ndash;&gt;-->
+<!--                                    </ul>-->
+                                    <label>
+                                        <select name="location1">
+                                            <option value ="景山街道">景山街道</option>
+                                            <option value ="朝外街道">朝外街道</option>
+                                            <option value="鲁谷街道">鲁谷街道</option>
+                                            <option value="大峪街道">大峪街道</option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <br/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="telephone" class="col-md-4 control-label">联系方式：</label>
+                                <div class="col-md-8">
+                                    <INPUT type="text" id="telephone" name="hPhone" placeholder="请输入您的手机号">
+                                </div>
+                                <br/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message" class="col-md-4 control-label">详细信息：</label>
+                                <div class="col-md-8">
+<!--                                    <INPUT type="text" id="message" placeholder="请输入详细信息">-->
+                                    <textarea class="form-control" rows="3" name="description" style="resize: none" id="message"></textarea>
+                                    <br/>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-default center-block green" id="fabu">发布</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br/>
+    </div>
+    <footer class="navbar text-center bg-primary gray" id="copyright">
+        <br>
+        <div class="row">
+
+            <div class="col-md-3">关于我们</div>
+            <div class="col-md-3">联系方式</div>
+            <div class="col-md-3">意见反馈</div>
+            <div class="col-md-3">帮助中心</div>
+
+
+
+        </div>
+        <br>
+        <div>宣城租房 © 2010 安徽 皖ICP证1000001号</div>
+        <br>
+
+
+    </footer>
+    <!-- 引入jQuery核心js文件 -->
+    <script th:src="@{/jquery/jquery-3.5.1.js}"></script>
+    <!-- 引入BootStrap核心js文件 -->
+    <script th:src="@{/bootstrap/bootstrap.js}"></script>
+    <script>
+
+        if($(window).height()==$(document).height()){
+            $("#copyright").addClass("navbar-fixed-bottom");
+        }
+        else{
+            $("#copyright").removeClass(" navbar-fixed-bottom");
+        }
+
+    </script>
+    <script>
+        function shows1(a) {
+            var obj=document.getElementById('menu');
+            obj.innerText=a;
+            // $('.buttonText').text(a)
+        }
+        function shows2(a) {
+            var obj=document.getElementById('menu2');
+            obj.innerText=a;
+        }
+        function shows3(a) {
+            var obj=document.getElementById('menu3');
+            obj.innerText=a;
+        }
+    </script>
+</body>
+</html>

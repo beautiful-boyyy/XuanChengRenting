@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!--声明文档兼容模式，表示使用IE浏览器的最新模式-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Responsive layout：响应式布局-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>宣城租房 - 用户登录</title>
+    <link th:href="@{/bootstrap/bootstrap.min.css}" rel="stylesheet">
+    <style type="text/css">
+        .row-center{
+            text-align:center;
+            margin-top: 120px;
+        }
+        .col-center {
+            display:inline-block;
+            float:none;
+            text-align:left;
+        }
+        .setbg{
+            background: url("/gif/登录页背景.gif");
+            background-size: 1220px 600px;
+        }
+        .panel{
+            border: 3px solid #69a794;
+            border-radius: 10px;
+        }
+        .green{
+            background-color: #69a794;
+        }
+        .row-center{
+            margin:50px;
+        }
+        .gray{
+            background-color: #5d655f;
+        }
+        #login1{
+            background-color: rgba(255, 255, 255,0.3);
+        }
+        a:hover{
+            color:#000000;
+        }
+        a{
+            color: #000000;
+        }
+        a:active {
+            color: #000000;
+        }
+        .row-center{
+            margin:200px;
+        }
+        .setpanel{
+            background-color: rgba(255, 255, 255,0.8);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid setbg">
+        <div class="row row-center">
+            <div class="col-center">
+                <div class="panel panel-default setpanel">
+                    <div class="panel-body">
+                        <form class="center-block" role="form" th:action="@{/login}">
+                            <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+                            <div class="form-group">
+                                <label for="name" class="col-md-4 control-label">账号：</label>
+                                <div class="col-md-8">
+                                    <INPUT type="text" id="name" name="uid" placeholder="请输入账号">
+                                </div>
+                                <br/>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="col-md-4 control-label">密码：</label>
+                                <div class="col-md-8">
+                                    <INPUT type="password" id="password" name="pwd" placeholder="请输入密码">
+                                </div>
+                                <br/>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <button type="submit" class="btn btn-circle col-md-offset-4"  id="login1">
+                                    <img th:src="@{/gif/登录按钮.gif}" alt="" width="30" height="30">
+                                </button>
+
+                                <a th:href="@{/toRegPage}" class="col-md-offset-3"> >>注册</a>
+
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <footer class="navbar text-center bg-primary gray" id="copyright">
+        <br>
+        <div class="row">
+
+            <div class="col-md-3">关于我们</div>
+            <div class="col-md-3">联系方式</div>
+            <div class="col-md-3">意见反馈</div>
+            <div class="col-md-3">帮助中心</div>
+
+
+
+        </div>
+        <br>
+        <div>宣城租房 © 2010 安徽 皖ICP证1000001号</div>
+        <br>
+
+    </footer>
+    <!-- 引入jQuery核心js文件 -->
+    <script th:src="@{/jquery/jquery-3.5.1.js}"></script>
+    <!-- 引入BootStrap核心js文件 -->
+    <script th:src="@{/bootstrap/bootstrap.js}"></script>
+    <script>
+
+        if($(window).height()==$(document).height()){
+            $("#copyright").addClass("navbar-fixed-bottom");
+        }
+        else{
+            $("#copyright").removeClass(" navbar-fixed-bottom");
+        }
+
+    </script>
+</body>
+</html>

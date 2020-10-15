@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!--声明文档兼容模式，表示使用IE浏览器的最新模式-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Responsive layout：响应式布局-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>宣城租房 -发布房屋信息</title>
+    <link th:href="@{/bootstrap/bootstrap.min.css}" rel="stylesheet">
+    <style type="text/css">
+        .green{
+            background-color: #69a794;
+        }
+
+        #panel1 {
+            border: 3px solid;
+        }
+        #panel2 {
+            border: 1px solid #69a794;
+        }
+        #panel3{
+            background-color: #69a794;
+        }
+        .gray{
+            background-color: #5d655f;
+        }
+        .yellow{
+            color: #f26b1f;
+        }
+        .text-green{
+            color: #69a794;
+        }
+        a:hover{
+            color:#000000;
+        }
+        a{
+            color: #000000;
+        }
+        a:active {
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <form class="navbar navbar-form row" role="search">
+        <img th:src="@{/gif/logo.gif}" alt="" width="200" height="50" class="col-sm-2">
+        <div class="form-group col-sm-offset-5 col-sm-5">
+            <a th:href="@{/selectAll}" class="text-green col-sm-3" style="font-weight: bold;font-size: 20px;line-height: 50px">首页</a>
+            <input type="text" class="form-control" placeholder="Search">
+            <button type="submit" class="btn btn-default">搜索</button>
+            <a href="#" class="col-sm-offset-1">
+                <img th:src="@{/gif/我的主页.gif}" alt="" width="50" height="50">
+            </a>
+        </div>
+
+
+    </form>
+<!--    <nav class="navbar navbar-default" role="navigation">-->
+<!--        　　<div class="container">　　&lt;!&ndash; container让导航条居中container-fluid让导航条自适应 &ndash;&gt;　　-->
+<!--        　　　　<div class="navbar-header">-->
+<!--            　　　　　　 &lt;!&ndash; 代表响应式布局：当浏览器宽度小于某个值时导航栏折叠变成三道杠 &ndash;&gt;-->
+<!--            <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" type="button">-->
+<!--                <span class="sr-only navbar-left">切换导航</span>-->
+<!--                <span class="icon-bar navbar-left"></span>-->
+<!--                <span class="icon-bar navbar-left"></span>-->
+<!--                <span class="icon-bar navbar-left"></span>-->
+<!--            </button>-->
+<!--            &lt;!&ndash; //代表导航栏左侧logo或者图标  &ndash;&gt;-->
+<!--            　　　　 　　&lt;!&ndash; <a class="navbar-brand" href="http://www.baidu.com">浏览器博物馆</a> &ndash;&gt;-->
+<!--            <span class="navbar-brand">宣城租房</span>-->
+<!--        </div>-->
+<!--        　　　　&lt;!&ndash; //导航条内容，为了响应式布局，点击三道杠弹出导航栏 &ndash;&gt;-->
+<!--        <div>-->
+<!--            　　　　　　　　&lt;!&ndash; //代表导航栏中的项目 &ndash;&gt;-->
+<!--            　　　　　　 <ul class="nav navbar-nav collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+<!--            <li style="width: 150px">-->
+<!--                <div class="dropdown col-md-3">-->
+<!--                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">-->
+<!--                        价格-->
+<!--                        <span class="caret"></span>-->
+<!--                    </button>-->
+<!--                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">-->
+<!--                        <li><a href="#" role="menuitem">不限</a> </li>-->
+<!--                        <li><a href="#" role="menuitem">100元以下</a> </li>-->
+<!--                        <li><a href="#" role="menuitem">100元到200元</a> </li>-->
+<!--                        <li><a href="#" role="menuitem">200元以上</a> </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li style="width: 180px">-->
+<!--                <div class="dropdown col-md-3">-->
+<!--                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">-->
+<!--                        房屋位置-->
+<!--                        <span class="caret"></span>-->
+<!--                    </button>-->
+<!--                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">-->
+<!--                        <li><a href="#" role="menuitem">不限</a> </li>-->
+<!--                        <li><a href="#" role="menuitem">知春路</a> </li>-->
+<!--                        <li><a href="#" role="menuitem">中关村大街</a> </li>-->
+<!--                        <li><a href="#" role="menuitem">学院路</a> </li>-->
+<!--                        <li><a href="#" role="menuitem">朝阳路</a> </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li style="width: 150px">-->
+<!--                <div class="dropdown col-md-3">-->
+<!--                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">-->
+<!--                        房型-->
+<!--                        <span class="caret"></span>-->
+<!--                    </button>-->
+<!--                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">-->
+<!--                        <li><a href="#" role="menuitem">不限</a> </li>-->
+<!--                        <li><a href="#" role="menuitem">一室一厅</a> </li>-->
+<!--                        <li><a href="#" role="menuitem">一室两厅</a> </li>-->
+<!--                        <li><a href="#" role="menuitem">两室一厅</a> </li>-->
+<!--                        <li><a href="#" role="menuitem">两室两厅</a> </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li style="width: 120px">-->
+<!--                <div class="dropdown col-md-3">-->
+<!--                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">-->
+<!--                        面积-->
+<!--                        <span class="caret"></span>-->
+<!--                    </button>-->
+<!--                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">-->
+<!--                        <li><a href="#" role="menuitem">不限</a> </li>-->
+<!--                        <li><a href="#" role="menuitem">40以下</a> </li>-->
+<!--                        <li><a href="#" role="menuitem">40-500</a> </li>-->
+<!--                        <li><a href="#" role="menuitem">500以上</a> </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--            &lt;!&ndash; 搜索框 &ndash;&gt;-->
+
+
+
+<!--        </div>-->
+<!--    </div>-->
+<!--    </nav>-->
+    <div class="container" id="view">
+<!--        <div class="page-header">-->
+<!--            <h4><small>当前位置：宣城租房网 - 浏览房源</small></h4>-->
+
+<!--        </div>-->
+        <hr class="simple" style="font-width: bold;" color="#6f5499" />
+        <div class="main wrap">
+
+            <h1 class="text-center text-green " th:text="${detail.getTitle()}"></h1>
+        </div>
+
+
+        <hr class="simple" style="font-width: bold;" color="#6f5499" />
+
+
+        <table>
+            <tbody>
+                <tr>
+                    <td class="col-md-1">
+                        <img th:src="@{/gif/image2.gif}" alt="" width="200" height="150">
+                    </td>
+                    <td class="text-left col-md-3">
+                        <p>户型：<SPAN style="font-weight: bold" th:text="${detail.getShape()}"></SPAN></p>
+                        <p>面积：<SPAN style="font-weight: bold" th:text="${detail.getArea()}"><SUP>2</SUP></SPAN></p>
+                        <p>价格：<SPAN style="font-weight: bold" th:text="${detail.getPrice()}"></SPAN></p>
+                        <p>位置：<SPAN th:text="${detail.getLocation()}" style="font-weight: bold"></SPAN></p>
+                        <p>联系方式：<SPAN th:text="${detail.getHPhone()}" style="font-weight: bold"></SPAN></p>
+                    </td>
+<!--                    <td class="col-md-2">-->
+<!--                        <div class="panel panel-default" id="panel1">-->
+<!--                            <P><A class=bold href="#">安徽宣城房地产经纪公司</A></P>-->
+<!--                            <P>资质证书：有</P>-->
+<!--                            <P>内部编号:1000</P>-->
+<!--                            <P>联 系 人：</P>-->
+<!--                            <P>联系电话：<SPAN></SPAN></P>-->
+<!--                            <P>手机号码：<SPAN>暂无</SPAN></P>-->
+<!--                        </div>-->
+<!--                    </td>-->
+                </tr>
+
+            </tbody>
+        </table>
+        <div class="panel panel-default" id="panel2">
+            <div class="panel-heading" id="panel3">
+                房源详细信息
+            </div>
+            <div class="panel-body" th:text="${detail.getDescription()}">
+            </div>
+        </div>
+        <footer class="navbar text-center bg-primary gray" id="copyright">
+            <br>
+            <div class="row">
+
+                <div class="col-md-3">关于我们</div>
+                <div class="col-md-3">联系方式</div>
+                <div class="col-md-3">意见反馈</div>
+                <div class="col-md-3">帮助中心</div>
+
+
+
+            </div>
+            <br>
+            <div>宣城租房 © 2010 安徽 皖ICP证1000001号</div>
+            <br>
+
+
+        </footer>
+    </div>
+<!--    </div>-->
+
+    <!-- 引入jQuery核心js文件 -->
+    <script th:src="@{/jquery/jquery-3.5.1.js}"></script>
+    <!-- 引入BootStrap核心js文件 -->
+    <script th:src="@{/bootstrap/bootstrap.js}"></script>
+<script>
+
+    if($(window).height()==$(document).height()){
+        $("#copyright").addClass("navbar-fixed-bottom");
+    }
+    else{
+        $("#copyright").removeClass(" navbar-fixed-bottom");
+    }
+
+</script>
+
+</body>
+</html>

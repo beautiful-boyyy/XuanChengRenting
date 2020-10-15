@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!--声明文档兼容模式，表示使用IE浏览器的最新模式-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Responsive layout：响应式布局-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>宣城租房 - 首页</title>
+    <link th:href="@{/bootstrap/bootstrap.min.css}" rel="stylesheet">
+    <style type="text/css">
+        .green{
+            background-color: #69a794;
+        }
+        .table-bordered tr,td{
+            border: 2px solid;
+
+        }
+        .table tbody tr td{
+            vertical-align: middle;
+        }
+        .gray{
+            background-color: #5d655f;
+        }
+        .yellow{
+            color: #f26b1f;
+        }
+        .text-green{
+            color: #69a794;
+        }
+        a:hover{
+            color:#000000;
+        }
+        a{
+            color: #000000;
+        }
+        a:active {
+            color: #000000;
+        }
+    </style>
+
+</head>
+<br>
+<!--    <div class="container">-->
+
+
+
+        <form class="navbar navbar-form row" role="search" th:action="@{/search}">
+            <img th:src="@{/gif/logo.gif}" alt="" width="200" height="50" class="col-sm-2">
+            <div class="form-group col-sm-offset-5 col-sm-5">
+                <div ><a class="text-green col-sm-3 active" style="font-weight: bold;font-size: 20px;line-height: 50px"
+                        th:href="@{/manage(phone=${session.phone})}">管理中心</a></div>
+                <input type="text" class="form-control" placeholder="Search" name="search">
+                <button type="submit" class="btn btn-default">搜索</button>
+                <a href="#" class="col-sm-offset-1">
+                    <img th:src="@{/gif/我的主页.gif}" alt="" width="50" height="50">
+                </a>
+            </div>
+
+
+        </form>
+
+
+        <nav class="navbar navbar-default" role="navigation">
+            　　<div class="container">　　<!-- container让导航条居中container-fluid让导航条自适应 -->　　
+            　　　　<div class="navbar-header">
+                　　　　　　 <!-- 代表响应式布局：当浏览器宽度小于某个值时导航栏折叠变成三道杠 -->
+                    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" type="button">
+                        <span class="sr-only navbar-left">切换导航</span>
+                        <span class="icon-bar navbar-left"></span>
+                        <span class="icon-bar navbar-left"></span>
+                        <span class="icon-bar navbar-left"></span>
+                     </button>
+                    <!-- //代表导航栏左侧logo或者图标  -->
+                    　　　　 　　<!-- <a class="navbar-brand" href="http://www.baidu.com">浏览器博物馆</a> -->
+                    <span class="navbar-brand">宣城租房</span>
+                </div>
+            　　　　<!-- //导航条内容，为了响应式布局，点击三道杠弹出导航栏 -->
+            <div>
+                　　　　　　　　<!-- //代表导航栏中的项目 -->
+        　　　　　　 <ul class="nav navbar-nav collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <li style="width: 150px">
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" onclick="queryTime(this)">
+                                    价格
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="#" role="menuitem">不限</a> </li>
+                                    <li><a href="#" role="menuitem">100元以下</a> </li>
+                                    <li><a href="#" role="menuitem">100元到200元</a> </li>
+                                    <li><a href="#" role="menuitem">200元以上</a> </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li style="width: 180px">
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" onclick="queryTime(this)">
+                                    房屋位置
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="#" role="menuitem">不限</a> </li>
+                                    <li><a href="#" role="menuitem">知春路</a> </li>
+                                    <li><a href="#" role="menuitem">中关村大街</a> </li>
+                                    <li><a href="#" role="menuitem">学院路</a> </li>
+                                    <li><a href="#" role="menuitem">朝阳路</a> </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li style="width: 150px">
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" onclick="queryTime(this)">
+                                    房型
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="#" role="menuitem">不限</a> </li>
+                                    <li><a href="#" role="menuitem">一室一厅</a> </li>
+                                    <li><a href="#" role="menuitem">一室两厅</a> </li>
+                                    <li><a href="#" role="menuitem">两室一厅</a> </li>
+                                    <li><a href="#" role="menuitem">两室两厅</a> </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li style="width: 120px">
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" onclick="queryTime(this)">
+                                    面积
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="#" role="menuitem">不限</a> </li>
+                                    <li><a href="#" role="menuitem">40以下</a> </li>
+                                    <li><a href="#" role="menuitem">40-500</a> </li>
+                                    <li><a href="#" role="menuitem">500以上</a> </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- 搜索框 -->
+
+
+
+            </div>
+        </div>
+        </nav>
+
+        <div class="container">
+            <table class="table table-striped table-bordered">
+                <tbody class="w-100">
+                    <tr class="row mx-0 bg-dark" th:each="emp:${lists}">
+                        <th class="col-md-1"><span><A href="#" target="_blank"><img th:src="@{/gif/image1.gif}" width="100" height="75" alt=""></a></span></th>
+                        <td>
+                            <dl>
+                                <dt><a th:href="@{/showDetail(hid=${emp.getHid()})}" target="_blank" style="font-size: 24px"><label th:text="${emp.getTitle()}"></label></a></dt>
+                                <dd th:text="'面积：' + ${emp.getArea()}"></dd>
+                                <dd th:text="'地址：' + ${emp.getLocation()}"></dd>
+                                <dd th:text="'联系方式：' + ${emp.getHPhone()}"></dd></dl></td>
+                        <td class="text-center" style="font-weight: bold;font-size: 20px" th:text="'房型：' + ${emp.getShape()}"></td>
+                        <td class="text-center" style="font-weight: bold;font-size: 20px;"><p class="yellow" th:text="'价格：' + ${emp.getPrice()}"></p></td></tr>
+<!--                    <tr class="row mx-0 bg-dark">-->
+<!--                        <th><span><a href="#" target="_blank"><img th:src="@{/gif/image2.gif}" width="100" height="75" alt=""></a></span></th>-->
+<!--                        <td>-->
+<!--                            <dl>-->
+<!--                                <dt><a href="#" target="_blank" style="font-size: 24px">大房子</a></dt>-->
+<!--                                <dd>面积：100平米</dd>-->
+<!--                                <dd>地址：海淀区中关村大街</dd>-->
+<!--                                <dd>联系方式：123456789 </dd></dl></td>-->
+<!--                        <td class="text-center" style="font-weight: bold;font-size: 20px">一室一厅</td>-->
+<!--                        <td class="text-center" style="font-weight: bold;font-size: 20px"><p class="yellow">230.元/月</p></td></tr>-->
+<!--                    <tr class="row mx-0 bg-dark">-->
+<!--                        <th><span><a href="#" target="_blank"><img th:src="@{/gif/image1.gif}" width="100" height="75" alt=""></a></span></th>-->
+<!--                        <td>-->
+<!--                            <dl>-->
+<!--                                <dt><a href="#" target="_blank" style="font-size: 24px">123</a></dt>-->
+<!--                                <dd>面积：123平米</dd>-->
+<!--                                <dd>地址：海淀区中关村大街</dd>-->
+<!--                                <dd>联系方式：123 </dd></dl></td>-->
+<!--                        <td class="text-center" style="font-weight: bold;font-size: 20px">一室一厅</td>-->
+<!--                        <td class="text-center" style="font-weight: bold;font-size: 20px"><p class="yellow">123.0元/月</p></td></tr>-->
+<!--                    <tr class="row mx-0 bg-dark">-->
+<!--                        <th><span><a href="#" target="_blank"><img th:src="@{/gif/image2.gif}" width="100" height="75" alt=""></a></span></th>-->
+<!--                        <td>-->
+<!--                            <dl>-->
+<!--                                <dt><a href="#" target="_blank" style="font-size: 20px">jjjj</a></dt>-->
+<!--                                <dd>面积：123平米</dd>-->
+<!--                                <dd>地址：海淀区中关村大街</dd>-->
+<!--                                <dd>联系方式：ff </dd></dl></td>-->
+<!--                        <td class="text-center" style="font-weight: bold;font-size: 20px">一室一厅</td>-->
+<!--                        <td class="text-center" style="font-weight: bold;font-size: 20px"><p class="yellow">123.0元/月</p></td></tr>-->
+<!--                    <tr>无租房信息</tr>-->
+                </tbody>
+            </table>
+
+            <nav>
+                <ul class="pager">
+
+                    <li class="previous"><a href="#"><img th:src="@{/gif/上一页.gif}" alt="" width="30" height="30"></a></li>
+                    <li class="next"><a href="#"><img th:src="@{/gif/下一页.gif}" alt="" width="30" height="30"></a></li>
+
+                    <span class=total>1/2页</span>
+                </ul>
+            </nav>
+
+
+        </div>
+
+<footer class="navbar text-center bg-primary gray" id="copyright">
+    <br>
+    <div class="row">
+
+            <div class="col-md-3">关于我们</div>
+            <div class="col-md-3">联系方式</div>
+            <div class="col-md-3">意见反馈</div>
+            <div class="col-md-3">帮助中心</div>
+
+
+
+    </div>
+    <br>
+    <div>宣城租房 © 2010 安徽 皖ICP证1000001号</div>
+    <br>
+
+
+</footer>
+<!--    </div>-->
+<!-- 引入jQuery核心js文件 -->
+<script th:src="@{/jquery/jquery-3.5.1.js}"></script>
+<!-- 引入BootStrap核心js文件 -->
+<script th:src="@{/bootstrap/bootstrap.js}"></script>
+<script>
+
+    if($(window).height()==$(document).height()){
+        $("#copyright").addClass("navbar-fixed-bottom");
+    }
+    else{
+        $("#copyright").removeClass(" navbar-fixed-bottom");
+    }
+
+</script>
+<script>
+    function queryTime(obj) {
+        //清空其它同类按钮选中颜色
+
+        //点击后变色
+        // $(obj).css("background-color", "#69a794");
+    }
+</script>
+</body>
+</html>

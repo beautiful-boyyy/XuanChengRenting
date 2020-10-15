@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!--声明文档兼容模式，表示使用IE浏览器的最新模式-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Responsive layout：响应式布局-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>宣城租房 - 用户管理</title>
+    <link th:href="@{/bootstrap/bootstrap.min.css}" rel="stylesheet">
+    <style>
+        .text-green{
+            color: #69a794;
+        }
+        #li1{
+            border: 2px solid;
+        }
+        #li2{
+            border: 2px solid;
+        }
+        #allMonitorTable{border: 1px solid #e5e9ee; }
+
+        #allMonitorTable thead{border: 1px solid #e5e9ee; }
+        .gray{
+            background-color: #5d655f;
+        }
+    </style>
+</head>
+<body>
+    <form class="navbar navbar-form row" role="search" th:action="@{/searchInCenter}">
+        <img th:src="@{/gif/logo.gif}" alt="" width="200" height="50" class="col-sm-2">
+        <div class="form-group col-sm-offset-5 col-sm-5">
+            <a th:href="@{/selectAll}" class="text-green col-sm-3" style="font-weight: bold;font-size: 20px;line-height: 50px">首页</a>
+            <input type="text" class="form-control" placeholder="Search" name="search">
+            <button type="submit" class="btn btn-default">搜索</button>
+            <a href="#" class="col-sm-offset-1">
+                <img th:src="@{/gif/我的主页.gif}" alt="" width="50" height="50">
+            </a>
+        </div>
+    </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-0 col-md-2" style="line-height: 100px;font-weight: bold;font-size: 20px">我发布的</div>
+            <div class="col-sm-2 col-md-offset-7">
+                <ul class="list-group" id="ul1">
+
+                    <li class="list-group-item text-right" id="li1">
+                        发布房屋信息
+                        <span>
+                        <a th:href="@{/toPublishPage}"><img th:src="@{/gif/发布房屋信息.gif}" width="30" height="20"> </a>
+                    </span>
+                    </li>
+
+                    <li class="list-group-item text-right" id="li2">
+                        退出
+                        <span>
+                        <a th:href="@{/logout}"><img th:src="@{/gif/退出.gif}" alt="" width="30" height="20"> </a>
+                    </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <table id="allMonitorTable" data-toggle="table" class="table table-striped table-no-bordered">
+            <tbody class="w-100">
+            <tr class="row mx-0 bg-dark" th:each="myEmp:${myList}">
+                <th class="col-md-1"><span><A href="#" target="_blank"><img th:src="@{/gif/image1.gif}" width="100" height="75" alt=""></a></span></th>
+                <td>
+                    <dl>
+                        <dt><a th:href="@{/showDetail(hid=${myEmp.getHid()})}" target="_blank" style="font-size: 24px"><label th:text="${myEmp.getTitle()}"></label></a></dt>
+                        <dd th:text="'面积：' + ${myEmp.getArea()}"></dd>
+                        <dd th:text="'地址：' + ${myEmp.getLocation()}"></dd>
+                        <dd th:text="'联系方式：' + ${myEmp.getHPhone()}"></dd></dl></td>
+                <td><a th:href="@{/updateItem(hid=${myEmp.getHid()})}" ><img th:src="@{/gif/修.gif}" class="img-responsive center-block" alt="" width="60" border="60"> </a> </td>
+                <td><a th:href="@{/deleteItem(hid=${myEmp.getHid()})}"><img th:src="@{/gif/删.gif}" class="img-responsive center-block" alt="" width="60" border="60"> </a> </td></tr>
+<!--            <tr class="row mx-0 bg-dark">-->
+<!--                <th><span><a href="#" target="_blank"><img src="切图gif/image2.gif" width="100" height="75" alt=""></a></span></th>-->
+<!--                <td>-->
+<!--                    <dl>-->
+<!--                        <dt><a href="#" target="_blank" style="font-size: 24px">大房子</a></dt>-->
+<!--                        <dd>面积：100平米</dd>-->
+<!--                        <dd>地址：海淀区中关村大街</dd>-->
+<!--                        <dd>联系方式：123456789 </dd></dl></td>-->
+<!--                <td><a href="#" ><img src="切图gif/修.gif" class="img-responsive center-block" alt="" width="60" border="60"> </a> </td>-->
+<!--                <td><a href="#" ><img src="切图gif/删.gif" class="img-responsive center-block" alt="" width="60" border="60"> </a> </td>-->
+
+<!--            <tr class="row mx-0 bg-dark">-->
+<!--                <th><span><a href="#" target="_blank"><img src="切图gif/image1.gif" width="100" height="75" alt=""></a></span></th>-->
+<!--                <td>-->
+<!--                    <dl>-->
+<!--                        <dt><a href="#" target="_blank" style="font-size: 24px">123</a></dt>-->
+<!--                        <dd>面积：123平米</dd>-->
+<!--                        <dd>地址：海淀区中关村大街</dd>-->
+<!--                        <dd>联系方式：123 </dd></dl></td>-->
+<!--                <td><a href="#" ><img src="切图gif/修.gif" class="img-responsive center-block" alt="" width="60" border="60"> </a> </td>-->
+<!--                <td><a href="#" ><img src="切图gif/删.gif" class="img-responsive center-block" alt="" width="60" border="60"> </a> </td>-->
+<!--            <tr class="row mx-0 bg-dark">-->
+<!--                <th><span><a href="#" target="_blank"><img src="切图gif/image2.gif" width="100" height="75" alt=""></a></span></th>-->
+<!--                <td>-->
+<!--                    <dl>-->
+<!--                        <dt><a href="#" target="_blank" style="font-size: 20px">jjjj</a></dt>-->
+<!--                        <dd>面积：123平米</dd>-->
+<!--                        <dd>地址：海淀区中关村大街</dd>-->
+<!--                        <dd>联系方式：ff </dd></dl></td>-->
+<!--                <td><a href="#" ><img src="切图gif/修.gif" class="img-responsive center-block" alt="" width="60" border="60"> </a> </td>-->
+<!--                <td><a href="#" ><img src="切图gif/删.gif" class="img-responsive center-block" alt="" width="60" border="60"> </a> </td>-->
+
+            </tbody>
+        </table>
+
+        <nav>
+            <ul class="pager">
+
+                <li class="previous"><a href="#"><img th:src="@{/gif/上一页.gif}" alt="" width="30" height="30"></a></li>
+                <li class="next"><a href="#"><img th:src="@{/gif/下一页.gif}" alt="" width="30" height="30"></a></li>
+
+                <span class=total>1/2页</span>
+            </ul>
+        </nav>
+
+
+    </div>
+    <footer class="navbar text-center bg-primary gray" id="copyright">
+        <br>
+        <div class="row">
+
+            <div class="col-md-3">关于我们</div>
+            <div class="col-md-3">联系方式</div>
+            <div class="col-md-3">意见反馈</div>
+            <div class="col-md-3">帮助中心</div>
+
+
+
+        </div>
+        <br>
+        <div>宣城租房 © 2010 安徽 皖ICP证1000001号</div>
+        <br>
+
+
+    </footer>
+
+    <!-- 引入jQuery核心js文件 -->
+    <script th:src="@{/jquery/jquery-3.5.1.js}"></script>
+    <!-- 引入BootStrap核心js文件 -->
+    <script th:src="@{/bootstrap/bootstrap.js}"></script>
+    <script>
+
+        if($(window).height()==$(document).height()){
+            $("#copyright").addClass("navbar-fixed-bottom");
+        }
+        else{
+            $("#copyright").removeClass(" navbar-fixed-bottom");
+        }
+
+    </script>
+</body>
+</html>
